@@ -14,16 +14,19 @@ class Solution {
         // so we have to find the previous node and link it to next.next to delete the node
         // we need this dummy incase of return nth node from end which is head
         // node before head is null which dont have next
-        ListNode dummy = new ListNode(-1);
-        ListNode dp = dummy;
+        ListNode dummyHead = new ListNode(-1);
+        ListNode dp = dummyHead;
         dp.next = head;
         //now we find the node before the delete node
         ListNode prevDelNode = findNthFromEnd(dp, n+1);
         prevDelNode.next = prevDelNode.next.next;
         //now return dummy.next
-        return dummy.next;
+        return dummyHead.next;
     }
     
+    // remember since we use n-k apporach in one loop
+    // the stop case is n1 == null, meaning we treat the last node as null
+    // therefore total nodes including final null - n can point to the node we wanted delete
     public ListNode findNthFromEnd(ListNode head, int n) {
         ListNode p1 = head;
         ListNode p2 = head;

@@ -29,6 +29,7 @@ class Solution {
         traverse(root.left);
         traverse(root.right);
         
+        //any part is fine, because null switching dont matter
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;        

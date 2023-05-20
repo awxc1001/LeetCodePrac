@@ -45,6 +45,7 @@ class Solution {
             path.removeLast();
             return;
         }
+        // always remove from the path after processing each node
         path.removeLast();
     }
 }

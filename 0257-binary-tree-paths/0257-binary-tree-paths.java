@@ -37,7 +37,7 @@ class Solution {
         traverse(root.left);
         traverse(root.right);
         
-        //if leafNode, this can postOrder or preOrder, preOrder faster 
+        //if leafNode, this can postOrder or preOrder, preOrder maybe faster? 
         if(root.left == null && root.right == null){
             // add to result
             res.addLast(String.join("->",path));

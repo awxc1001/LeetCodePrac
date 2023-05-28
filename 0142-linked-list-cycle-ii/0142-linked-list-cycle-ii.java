@@ -11,28 +11,36 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        ListNode fast, slow;
-        fast = slow = head;
-        while (fast != null && fast.next != null) {
+        
+        
+        ListNode fast = head;
+        ListNode slow = head;
+        
+      
+
+        
+        while(fast != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
-            if (fast == slow) break;
+            
+            if(slow == fast){
+                break;
+            }
         }
-        // 上面的代码类似 hasCycle 函数
+        
+        
+         //If there is no cycle after the above traversel, break did not reach
         if (fast == null || fast.next == null) {
-            // fast 遇到空指针说明没有环
             return null;
         }
-
-        // 重新指向头结点
+        
+        //find intersection, let one pointer go to head and move until fast and slow match
         slow = head;
-        // 快慢指针同步前进，相交点就是环起点
-        while (slow != fast) {
+        while( slow != fast ){
             fast = fast.next;
             slow = slow.next;
         }
+        
         return slow;
     }
 }
-// 详细解析参见：
-// https://labuladong.github.io/article/?qno=142

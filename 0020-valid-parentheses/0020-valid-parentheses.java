@@ -4,6 +4,8 @@ class Solution {
         //use Stack, first in last out
         Stack<Character> lefts = new Stack<>();
         
+        // use stack becasue of "()[{()}]" queue wont work 
+        
         for(char c: s.toCharArray() ){
             if(c == '(' || c == '[' || c == '{'){
                 lefts.push(c);

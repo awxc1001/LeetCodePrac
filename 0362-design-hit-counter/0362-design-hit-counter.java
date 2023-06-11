@@ -13,6 +13,7 @@ class HitCounter {
     
     public int getHits(int timestamp) {
         //first in first out, so we can see if it past 300 seconds
+        // >= not > 300
         while( !q.isEmpty() && timestamp - q.peek() >= 300){
             //removed all the invalid ones from q
             q.poll();

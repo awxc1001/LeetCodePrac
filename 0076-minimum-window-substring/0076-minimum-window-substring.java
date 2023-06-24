@@ -66,6 +66,7 @@ class Solution {
          }   
         }
         
+        //either didnt find, or return the smallest subString with the start and len
         return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
         
     }

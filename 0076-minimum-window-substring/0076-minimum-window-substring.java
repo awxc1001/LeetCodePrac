@@ -27,6 +27,8 @@ class Solution {
             right ++;
             //update the data in map
             if(require.containsKey(c)){
+        //s="AAABBC"，t="ABC"，那么require映射就是{A:1, B:1, C:1}。
+        //在while循环中，我们扩大窗口，然后window映射变成{A:3, B:2, C:1}，同时validCount也达到了require.size()（为3）。
                 window.put(c, window.getOrDefault(c,0)+1);
                 //if each key value pair match, update the validCount
                 if(window.get(c).equals(require.get(c))){
@@ -47,12 +49,15 @@ class Solution {
              char del = s.charAt(left);
              left++;
              
+             //update the window only if the del key is in the require map
              if(require.containsKey(del)){
+                 //window映射{A:3, B:2, C:1}
                  //only update validCount matched both map, so no more shrink
+                 //require映射{A:1, B:1, C:1}
                  if(window.get(del).equals(require.get(del))){
                      validCount--;          
                  }
-            // keep removing from the window regardless
+            // keep removing from the window regardless,
             window.put(del, window.get(del)-1); 
             }
              

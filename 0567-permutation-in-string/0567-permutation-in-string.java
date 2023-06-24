@@ -1,5 +1,5 @@
 class Solution {
-    public boolean checkInclusion(String s2, String s1) { //s2和s1搞反了
+    public boolean checkInclusion(String s2, String s1) {
         
         //use hashmap to count each char appearance of s2
         //another hashmap for the sliding window
@@ -44,7 +44,7 @@ class Solution {
                  //if the count matches in both, we need decrease the validCount
                  //meaning window no longer covers all the chars in s2 required
                  if(window.get(del).equals(required.get(del))){
-                     validCount--;
+                     validCount --;
                  }
                  window.put(del,window.get(del)-1);
              }  

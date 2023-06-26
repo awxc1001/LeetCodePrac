@@ -1,7 +1,8 @@
 class Solution {
     public int numSubarrayProductLessThanK(int[] nums, int k) {
+        // check for k <= 1 because strictly less than K
+        if(k <= 1) return 0; 
         
-        if(k == 0) return 0;
         //window
         int left = 0;
         int right = 0;
@@ -13,7 +14,7 @@ class Solution {
         while(right < nums.length){
             //1.increase the window  windoPro < k
             //element itself also counts as a subarray that have product less than K
-            if(windowPro <= k){
+            if(windowPro < k){
             windowPro *= nums[right];
             right++;
             }

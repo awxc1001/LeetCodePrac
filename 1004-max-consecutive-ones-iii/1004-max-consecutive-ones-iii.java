@@ -12,10 +12,12 @@ class Solution {
         int maxLen = Integer.MIN_VALUE;
         while(right < nums.length){
             
-            if(nums[right] == 0){
+            //increase window whenever below k 0s
+            if( zeroCount <=k){
+                if(nums[right] == 0){
                 zeroCount++;
+                }
             }
-            
             right++;
             
             //if now window is 10010, need to remove the zeroCount to 2 if k=2

@@ -14,24 +14,28 @@
  * }
  */
 class Solution {
-    
     public TreeNode invertTree(TreeNode root) {
+        
         traverse(root);
         return root;
+        
     }
     
-    public void traverse(TreeNode root){
+    public void traverse(TreeNode root) {
         
         if(root == null){
             return;
         }
         
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        TreeNode temp = root.left;
+        //swap
+        root.left = root.right;
+        root.right = temp;
+        
         traverse(root.left);
         traverse(root.right);
         
-        //any part is fine, because null switching dont matter
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;        
     }
 }

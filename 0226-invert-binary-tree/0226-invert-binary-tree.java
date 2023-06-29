@@ -16,7 +16,23 @@
 class Solution {
     public TreeNode invertTree(TreeNode root) {
         
-        traverse(root);
+        // traverse(root);
+        
+        //divede conqure subproblem approach
+        if(root == null){
+            return null;
+        }
+        
+        //define it to swop the left sub and right sub
+        TreeNode swoppedLeft = invertTree(root.left);
+        TreeNode swoppedRight = invertTree(root.right);
+        
+        //then backto the starting root, swap these two sub
+        root.left = swoppedRight;
+        root.right = swoppedLeft;
+        
+        
+        
         return root;
         
     }

@@ -30,7 +30,7 @@ class Solution {
         TreeNode left = root.left;
         TreeNode right = root.right;
         TreeNode temp = root.left;
-        //swap
+        //preorder swap, when just entered the nodes
         root.left = root.right;
         root.right = temp;
         

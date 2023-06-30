@@ -14,39 +14,30 @@
  * }
  */
 class Solution {
-    
-    boolean found = false;
-    int calSum = 0;
-        
-    
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        if (root == null){
+        //recursion approach
+        //current node should be doing the following
+        //fistly we cover all the base conditon checks for this node
+        //if itself is null return false
+        //if itself is a leaftNode, we need to check if it equals a targetvalue
+        //that targetValue should reduce from its parent root val
+        //now check if this node meet the targetValue, return true recursively
+        //if not return false, end the recursion
+        
+        if(root == null){
             return false;
         }
-        traverse(root, targetSum);
-        return found;
-    }
-    
-    public void traverse(TreeNode root, int targetSum){
         
-        if (root == null){
-            return;
+        
+        
+        if(root.left ==null && root.right == null && root.val == targetSum){
+            return true;
         }
         
-        //before current node going down
-        calSum += root.val;
-        //check if it node is leaf
-        if(root.left == null && root.right == null){
-            //check if targetSum
-            if(calSum == targetSum){
-                found = true;
-            }
-        }
+      int targetSub = targetSum - root.val;
         
-        //go down 
-        traverse(root.left, targetSum);
-        traverse(root.right, targetSum);
-        //reverse back
-        calSum -= root.val;   
+     return hasPathSum(root.left, targetSub) || hasPathSum(root.right, targetSub);
+       
+        
     }
 }

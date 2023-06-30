@@ -14,31 +14,20 @@
  * }
  */
 class Solution {
-    
-    int depth = 0;
-    int result = 0;
-    
-    
     public int maxDepth(TreeNode root) {
-        traverse(root);
-        return result;
-    }
-    
-    //traverse recusiverly
-    public void traverse(TreeNode root){
         
+        //what should a currentNode do
+        //retrive the max height from its left and right
+        //making sure itself is not null
         if(root == null){
-          return ;
+            return 0; //indicate no depth
         }
         
-       //any root exisit, should increase depth
-       depth ++;
-       result = Math.max(result, depth);
-       
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
         
-       traverse(root.left);
-       traverse(root.right);
-       //after check there is no more left or right child, go up to the root node level 
-       depth --;
+        //now as the root node, at its level to the deeper height
+        return 1+Math.max(leftHeight,rightHeight);
+        
     }
 }

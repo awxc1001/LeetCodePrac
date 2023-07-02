@@ -27,13 +27,15 @@ class Solution {
         }
         //check if this node has left leaf
         //need to also check if it actually has leftnode with val
-        if( root.left != null &&
+    
+        traverse(root.left);
+        traverse(root.right);
+            if( root.left != null &&
             root.left.left == null && 
            root.left.right == null){
             leftSum += root.left.val;
         }
-        traverse(root.left);
-        traverse(root.right);
+        
     }
     
 }

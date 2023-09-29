@@ -17,7 +17,7 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         int size = nums.length; //size和numbers不是一个意思
         //base case, from two sum then stacking
-        if(numbers < 2 || size < numbers) return result;
+        // if(numbers < 2 || size < numbers) return result;
         if(numbers == 2){//要找两数之和的时候
             //常规双指针搜索整个array
             int left = startP;//指针应该是startP，保证不选多个

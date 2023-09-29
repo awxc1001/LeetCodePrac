@@ -28,6 +28,9 @@ class Solution {
                 
                 //keep shifting with no duplicate answer
                 //ensure no ArrayOutofBoundry Exception
+                
+                //不能写成nums[left+1]和nums[right-1]因为他们会自己移动导致不是原来的
+                //low和high记录了保证一直是那个对的left和right值
                 while(left < right && nums[left] == low){
                     left++;
                 }

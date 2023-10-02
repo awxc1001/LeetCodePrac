@@ -1,30 +1,30 @@
 class Solution {
     public boolean isValid(String s) {
-        
-        //use Stack, first in last out
-        Stack<Character> lefts = new Stack<>();
-        
-        // use stack becasue of "()[{()}]" queue wont work 
-        
-        for(char c: s.toCharArray() ){
+        Stack<Character> left= new Stack<>();
+        //outest left char match for outest right char, can only be done using stack
+
+        for(int i = 0; i < s.length(); i++){
+            Character c = s.charAt(i);
             if(c == '(' || c == '[' || c == '{'){
-                lefts.push(c);
-            }else{ 
-            // consider case with only one right ]
-                if( !lefts.isEmpty() && leftChar(c) == lefts.peek()  ){
-                    lefts.pop();
-                }else{
-                    return false;
-                }
+                left.push(c);
+            }else{ //not these left char then match
+                //use peek to compare, otherwise if pop, element lost
+                 if(!left.isEmpty() && LeftChar(c) == left.peek()){
+                     //only match, then pop 
+                     left.pop();
+                 }else{
+                     //return false if immediate fail
+                     return false;
+                 }
             }
         }
-        //make sure all lefts are out
-        return lefts.isEmpty();
+        //check if all left been matched
+        return left.isEmpty();
     }
     
-    public char leftChar (char right){
-        if(right == ')') return '('; 
-        if(right == ']') return '['; 
-         return '{'; 
+    public Character LeftChar(Character c){
+        if(c == ')') return '(';
+        if(c == '}') return '{';
+        return '[';
     }
 }

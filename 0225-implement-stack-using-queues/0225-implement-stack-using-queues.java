@@ -1,48 +1,36 @@
 class MyStack {
-    
-    Queue<Integer> q = new LinkedList<>();
-    int top_elem = 0;
+    //q1 1x 2y 3z add g, first poll out into q2 1x 2y 3z, then q1 add g      
+    // //在加入元素时先将q1中的元素依次出栈压入q2，然后将新加入的元素压入q1，再将q2中的元素依次出栈压入q1
+    Queue<Integer> q1,q2; 
     
     public MyStack() {
-
+        q1 = new LinkedList<>();
+        q2 = new LinkedList<>();
     }
     
     public void push(int x) {
-        // x 是队列的队尾，是栈的栈顶
-        q.offer(x);
-        top_elem = x;
+        while(q1.size() > 0){
+            q2.offer(q1.poll());
+        }
+        
+        q1.offer(x);
+        
+        while(q2.size() > 0){
+            q1.offer(q2.poll());
+        }
+        
+    }
+    //since push reset the order, rest is simple operation
+    public int pop() {
+        return q1.poll();
     }
     
     public int top() {
-        
-        return top_elem;
+        return q1.peek();
     }
-    
-    public int pop() {
-        
-        int size = q.size();
-        
-        //last remain two, first one to record top , second one to poll
-        //so act like stack pop out the top element
-        
-        while( size > 2){
-            
-        q.offer(q.poll());
-        size --;
-        }
-        
-        //new top
-        top_elem = q.peek();
-        q.offer(q.poll());
-        //then poll 
-        return q.poll();
-        
-    }
-    
-
     
     public boolean empty() {
-        return q.isEmpty();
+        return q1.isEmpty();
     }
 }
 

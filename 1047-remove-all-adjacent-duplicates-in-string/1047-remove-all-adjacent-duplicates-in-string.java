@@ -24,6 +24,7 @@ class Solution {
          String str = "";
         //剩余的元素即为不重复的元素
         while (!charS.isEmpty()) {
+            //是从str头部开始开始增加每个pop的字符，所以等于reverse了
             str = charS.pop() + str;
         }
         return str;

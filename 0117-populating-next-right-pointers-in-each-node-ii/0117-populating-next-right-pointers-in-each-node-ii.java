@@ -36,6 +36,8 @@ class Solution {
                 // 如果不是这一层的最后一个节点，则设置next指针
                 if (i < size - 1) {
                     cur.next = q.peek();
+                }else{
+                    cur.next = null;
                 }
 
                 if (cur.left != null) {
